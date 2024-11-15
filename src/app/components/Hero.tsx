@@ -34,7 +34,10 @@ const HeroSection = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? 
+              <X size={24} className="text-gray-900 dark:text-white" /> : 
+              <Menu size={24} className="text-gray-900 dark:text-white" />
+            }
           </button>
         </div>
 
