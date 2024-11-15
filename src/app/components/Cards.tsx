@@ -28,19 +28,16 @@ export default function Component() {
       title: "Creators and Influencers",
       description:
         "Create a market map of your niche that becomes a go-to resource for your audience and drive qualified leads to your courses, newsletter, YouTube channel and more.",
-      imageUrl: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1471&auto=format&fit=crop"
     },
     {
       title: "Directory Makers",
       description:
         "Turn your directory data into a visually engaging market map that easily captures attention, gets shared on social media, and drives traffic back to your directory site.",
-      imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1415&auto=format&fit=crop"
     },
     {
       title: "Communities",
       description:
         "Engage your community members with a crowed-sourced map that promotes active participation and discussions, while creating a valuable asset for the community.",
-      imageUrl: "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1374&auto=format&fit=crop"
     },
   ]
 
@@ -65,7 +62,7 @@ export default function Component() {
                 key={index}
                 title={useCase.title}
                 description={useCase.description}
-                imageUrl={useCase.imageUrl}
+                imageUrl="/your-image-url.jpg"
               />
             ))}
           </div>
