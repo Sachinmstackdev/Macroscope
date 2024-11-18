@@ -80,34 +80,42 @@ export default function Component() {
   return (
     <section className="py-16 px-4 bg-[#F9F9F8]" aria-labelledby="pricing-heading">
       <div className="max-w-7xl mx-auto text-center">
-        <span className="inline-block px-4 py-1 text-[#464646] bg-[#F3F2F0] rounded-full text-sm mb-4">
+        {/* Label */}
+        <span className="inline-block px-4 py-1 text-[#464646] bg-[#F3F2F0] rounded-full text-sm mb-4 border border-black font-inter font-medium">
           PRICING
         </span>
-        <h1 id="pricing-heading" className="text-4xl md:text-5xl font-bold text-[#464646] mb-2">
+
+        {/* Heading */}
+        <h1 id="pricing-heading" className="text-4xl md:text-5xl font-inter font-bold text-[#464646] mb-2">
           Start for Free
         </h1>
-        <p className="text-2xl md:text-3xl text-[#515151] mb-12">
+
+        {/* Subheading */}
+        <p className="text-2xl md:text-3xl font-inter font-normal text-[#515151] mb-12">
           Upgrade for premium features.
         </p>
 
-        {/* Billing Toggle */}
+        {/* Billing Toggle Buttons */}
         <div className="relative w-full max-w-md mx-auto mb-12">
           <div className="flex justify-between bg-[#F3F2F0] rounded-full p-1">
             <button
               onClick={() => setBillingPeriod("monthly")}
-              className="flex-1 py-2 text-sm font-medium z-10 relative"
+              className={`flex-1 py-2 text-sm font-inter font-medium z-10 relative
+                ${billingPeriod === "monthly" ? "text-white" : "text-[#464646]"}`}
             >
               Pay Monthly
             </button>
             <button
               onClick={() => setBillingPeriod("yearly")}
-              className="flex-1 py-2 text-sm font-medium z-10 relative"
+              className={`flex-1 py-2 text-sm font-inter font-medium z-10 relative
+                ${billingPeriod === "yearly" ? "text-white" : "text-[#464646]"}`}
             >
               Pay yearly
             </button>
             <button
               onClick={() => setBillingPeriod("once")}
-              className="flex-1 py-2 text-sm font-medium z-10 relative"
+              className={`flex-1 py-2 text-sm font-inter font-medium z-10 relative
+                ${billingPeriod === "once" ? "text-white" : "text-[#464646]"}`}
             >
               Pay Once
             </button>
@@ -124,7 +132,7 @@ export default function Component() {
         </div>
 
         {billingPeriod === "yearly" && (
-          <p className="text-sm text-[#515151] -mt-8 mb-12">2 months free</p>
+          <p className="text-sm text-[#515151] -mt-8 mb-12 font-inter font-normal">2 months free</p>
         )}
 
         {/* Pricing Cards */}
@@ -140,27 +148,27 @@ export default function Component() {
                   : "border border-[#D7D7D7]"
               }`}
             >
-              <h2 className="text-xl font-semibold text-[#464646] mb-4">{plan.name}</h2>
+              <h2 className="text-xl font-inter font-semibold text-[#464646] mb-4">{plan.name}</h2>
               <div className="mb-6">
                 {plan.price[billingPeriod] === "FREE" ? (
-                  <span className="text-4xl font-bold text-[#464646]">FREE</span>
+                  <span className="text-4xl font-inter font-bold text-[#464646]">FREE</span>
                 ) : (
                   <div className="flex items-start justify-center">
-                    <span className="text-4xl font-bold text-[#464646]">
+                    <span className="text-4xl font-inter font-bold text-[#464646]">
                       ${plan.price[billingPeriod]}
                       {billingPeriod !== "once" && (
-                        <span className="text-2xl font-normal">/mo</span>
+                        <span className="text-2xl font-inter font-normal">/mo</span>
                       )}
                     </span>
                   </div>
                 )}
-                <span className="text-sm text-[#C1C1C1] mt-2 block">
+                <span className="text-sm text-[#464646] mt-2 block font-inter font-normal">
                   {billingPeriod === "once" ? "one-time payment" : `per project billed ${billingPeriod}`}
                 </span>
               </div>
 
               <button
-                className={`w-full py-2 px-4 rounded-full mb-8 flex items-center justify-center gap-2 ${
+                className={`w-full py-2 px-4 rounded-full mb-8 flex items-center justify-center gap-2 font-inter font-medium ${
                   selectedPlan === index
                     ? "bg-[#464646] text-white"
                     : "bg-[#F3F2F0] text-[#464646]"
@@ -178,9 +186,9 @@ export default function Component() {
                       size={20}
                     />
                     <span
-                      className={
+                      className={`font-inter font-normal ${
                         feature.included ? "text-[#464646]" : "text-[#C1C1C1]"
-                      }
+                      }`}
                     >
                       {feature.name}
                     </span>
@@ -191,7 +199,7 @@ export default function Component() {
           ))}
         </div>
 
-        <p className="text-[#515151] mt-12">
+        <p className="text-[#515151] mt-12 font-inter font-normal">
           15-day free trial • Cancel anytime • Money-back guarantee
         </p>
       </div>

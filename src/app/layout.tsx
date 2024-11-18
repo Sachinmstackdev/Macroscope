@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display, DM_Serif_Text } from "next/font/google";
+import { DM_Sans, DM_Serif_Display, DM_Serif_Text, Inter } from "next/font/google";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -7,6 +7,7 @@ const dmSans = DM_Sans({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000'],
   style: ['normal', 'italic'],
   variable: '--font-dm-sans',
+  display: 'swap',
 });
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -14,6 +15,7 @@ const dmSerifDisplay = DM_Serif_Display({
   weight: ['400'],
   style: ['normal', 'italic'],
   variable: '--font-dm-serif-display',
+  display: 'swap',
 });
 
 const dmSerifText = DM_Serif_Text({
@@ -21,6 +23,13 @@ const dmSerifText = DM_Serif_Text({
   weight: ['400'],
   style: ['normal', 'italic'],
   variable: '--font-dm-serif-text',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -34,8 +43,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${dmSans.variable} ${dmSerifDisplay.variable} ${dmSerifText.variable} antialiased`}>
+    <html lang="en" className={`${dmSans.variable} ${dmSerifDisplay.variable} ${dmSerifText.variable} ${inter.variable}`}>
+      <body>
         {children}
       </body>
     </html>

@@ -1,5 +1,5 @@
-import { FaLinkedin, FaReddit } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
+import { FaSquareXTwitter, FaReddit } from "react-icons/fa6";
 import Image from 'next/image';
 import { IoIosMail } from "react-icons/io";
 
@@ -27,7 +27,7 @@ export default function Footer() {
                 Made with ♥ by Cebe
               </p>
             </div>
-            <div className="flex space-x-4 mb-4">
+            <div className="flex space-x-4">
               <a href="#" className="text-black hover:text-gray-700">
                 <span className="sr-only">Twitter</span>
                 <FaSquareXTwitter className="h-8 w-8" />
@@ -48,7 +48,7 @@ export default function Footer() {
               </a>
               <a href="#" className="text-black hover:text-gray-700">
                 <span className="sr-only">Email</span>
-                <IoIosMail className="h-13 w-13" />
+                <IoIosMail className="h-10 w-10 -mt-1" />
               </a>
             </div>
           </div>

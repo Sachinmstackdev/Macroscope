@@ -15,12 +15,12 @@ export default function Component() {
     {
       title: "Configure Layout",
       description: "Organize the groups on the map with easily drag-and-drop. Resize the group with with auto adjusting items.",
-      image: "/images/features/configure-layout.png",
+      image: "/placeholder.svg?height=200&width=300",
     },
     {
       title: "Customize Style",
       description: "Tailor the style, shape and colors both at a group level and a map level to make the map look unique and reflect your style.",
-      image: "/images/features/customize-style.png",
+      image: "/placeholder.svg?height=200&width=300",
     },
     {
       title: "Manage Data",
@@ -45,14 +45,15 @@ export default function Component() {
   ]
 
   return (
-    <section className="py-16 px-4 bg-[#F9F9F8]">
+    <section className="py-16 px-4 bg-[#F3F2F0]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1 text-[#464646] bg-[#F3F2F0] rounded-full text-sm mb-4">
+          <span className="inline-block px-4 py-1 text-[#464646] bg-[#F3F2F0] rounded-full text-sm mb-4 border border-black font-medium">
             FEATURES
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#464646] max-w-3xl mx-auto">
-            All you need to create interactive market maps, in one place
+          <h2 className="font-['DM_Sans'] font-normal text-[48px] leading-[105%] text-[#464646] max-w-3xl mx-auto">
+            All you need to create interactive market maps,
+            in one place
           </h2>
         </div>
 
@@ -64,7 +65,7 @@ export default function Component() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="border-2 border-white bg-white h-full hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+              <Card className="border-2 border-white bg-white h-[420px] hover:shadow-lg transition-shadow duration-300 overflow-hidden">
                 <CardHeader className="p-0">
                   <div className="aspect-[3/2] relative bg-[#F3F2F0] rounded-t-lg overflow-hidden">
                     <img
@@ -91,24 +92,14 @@ export default function Component() {
         </div>
 
         <div className="text-center mt-16">
-          <p className="text-[#515151] mb-2">
-            We are constantly adding new features
+          <p className="font-['DM_Sans'] font-medium text-[20px] text-[#515151] leading-[126%] mb-4">
+            We are constantly adding new features<br />
+            <span className="space-x-2">
+              <a href="#roadmap" className="underline decoration-1 underline-offset-4 hover:text-[#464646]">Roadmap</a>
+              <span>and</span>
+              <a href="#changelog" className="underline decoration-1 underline-offset-4 hover:text-[#464646]">Changelog</a>
+            </span>
           </p>
-          <div className="flex items-center justify-center gap-4">
-            <a
-              href="#roadmap"
-              className="font-['DM_Sans'] font-medium text-[#515151] tracking-[-0.05em] leading-[126%] underline decoration-1 underline-offset-4"
-            >
-              Roadmap
-            </a>
-            <span className="text-[#C1C1C1]">and</span>
-            <a
-              href="#changelog"
-              className="font-['DM_Sans'] font-medium text-[#515151] tracking-[-0.05em] leading-[126%] underline decoration-1 underline-offset-4"
-            >
-              Changelog
-            </a>
-          </div>
         </div>
       </div>
     </section>
