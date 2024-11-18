@@ -61,10 +61,11 @@ export default function HowItWorks() {
           <div className="w-full lg:w-1/2 relative bg-white rounded-lg shadow-md overflow-hidden">
             <video
               ref={videoRef}
+              src="/videos/how-it-works.mp4"
               className="w-full h-full object-cover"
-              poster="/placeholder.svg"
+              controls
+              poster="/images/video-poster.jpg"
             >
-              <source src="/path-to-your-video.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <button

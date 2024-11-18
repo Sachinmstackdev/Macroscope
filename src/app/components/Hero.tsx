@@ -4,6 +4,25 @@ import React, { useState } from 'react';
 import { Menu, X, Plus } from 'lucide-react';
 import Image from 'next/image';
 import MapHeader from './MapHeader';
+import { FaCircleArrowRight } from 'react-icons/fa6';
+import { DM_Serif_Text, DM_Sans, DM_Serif_Display } from 'next/font/google';
+
+const dmSerifText = DM_Serif_Text({
+  weight: ['400'],
+  subsets: ['latin'],
+});
+
+const dmSans = DM_Sans({
+  weight: ['400'],
+  subsets: ['latin'],
+});
+
+const dmSerifDisplay = DM_Serif_Display({
+  weight: ['400'],
+  subsets: ['latin'],
+  style: ['italic'],
+  variable: '--font-dm-serif-display',
+});
 
 const HeroSection = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,18 +33,24 @@ const HeroSection = () => {
       <nav className="w-full px-4 md:px-8 py-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-black dark:bg-white transform rotate-45" />
-            <span className="text-xl font-semibold text-gray-900 dark:text-white">Macroscope</span>
+          <div className="flex items-center">
+            <Image
+              src="/Logo.png"
+              alt="Macroscope Logo"
+              width={180}
+              height={38}
+              priority
+              className="text-gray-900 dark:invert"
+            />
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#pricing" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Pricing</a>
-            <a href="#login" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Log in</a>
-            <button className="bg-black dark:bg-white text-white dark:text-gray-900 px-6 py-2 rounded-full flex items-center space-x-2 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
-              <span>Create A Map For Free</span>
-              <span className="transform rotate-[-45deg]">→</span>
+            <a href="#pricing" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white`}>Pricing</a>
+            <a href="#login" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white`}>Log in</a>
+            <button className="bg-black dark:bg-white text-white dark:text-gray-900 px-6 py-2 rounded-full flex items-center justify-center space-x-2 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
+              <span className={`${dmSerifText.className} text-xl leading-[140%] w-[194px] h-[28px]`}>Create A Map For Free</span>
+              <FaCircleArrowRight className="text-lg" />
             </button>
           </div>
 
@@ -45,11 +70,11 @@ const HeroSection = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 right-0 bg-white dark:bg-gray-900 border-b dark:border-gray-700 z-50">
             <div className="flex flex-col space-y-4 p-4">
-              <a href="#pricing" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Pricing</a>
-              <a href="#login" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Log in</a>
+              <a href="#pricing" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white`}>Pricing</a>
+              <a href="#login" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white`}>Log in</a>
               <button className="bg-black dark:bg-white text-white dark:text-gray-900 px-6 py-2 rounded-full flex items-center justify-center space-x-2 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
-                <span>Create A Map For Free</span>
-                <span className="transform rotate-[-45deg]">→</span>
+                <span className={`${dmSerifText.className} text-xl leading-[140%] w-[194px] h-[28px]`}>Create A Map For Free</span>
+                <FaCircleArrowRight className="text-lg" />
               </button>
             </div>
           </div>
@@ -58,19 +83,27 @@ const HeroSection = () => {
 
       {/* Hero Content */}
       <main className="max-w-7xl mx-auto px-4 md:px-8 pt-16 pb-24 text-center">
-        <h1 className="text-4xl md:text-6xl font-semibold mb-4 max-w-4xl mx-auto text-gray-900 dark:text-white">
-          Build authority in your niche with{' '}
-          <span className="italic">Interactive Market Map</span>.
+        <h1 className="text-4xl md:text-5xl lg:text-6xl max-w-4xl mx-auto">
+          <span className="block font-['DM_Sans'] font-medium mb-2 text-[#464646]">
+            Build authority in your niche
+          </span>
+          <span className="block text-[#464646]">
+            with{' '}
+            <span className="font-['Playfair_Display'] italic text-[#000000] font-bold">
+              Interactive Market Map
+            </span>
+            .
+          </span>
         </h1>
         
-        <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+        <p className={`${dmSans.className} text-[20px] leading-[140%] text-[#464646]/70 max-w-2xl mx-auto mt-6 mb-8`}>
           Macroscope helps you easily create interactive and insightful market maps
           that get attention, drive traffic, engage audience and boost shares.
         </p>
 
         <button className="bg-black text-white px-8 py-3 rounded-full flex items-center space-x-2 mx-auto hover:bg-gray-800 transition-colors">
-          <span>Create A Map For Free</span>
-          <span className="transform rotate-[-45deg]">→</span>
+          <span className={`${dmSerifText.className} text-xl leading-[140%] w-[194px] h-[28px]`}>Create A Map For Free</span>
+          <FaCircleArrowRight className="text-lg" />
         </button>
 
         {/* Market Map Container */}

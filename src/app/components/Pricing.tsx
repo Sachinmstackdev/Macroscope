@@ -1,123 +1,200 @@
 "use client"
 
-import { useState } from 'react'
+import { useState } from "react"
+import { motion } from "framer-motion"
 import { Check } from 'lucide-react'
 
-export default function Component() {
-  const [billingCycle, setBillingCycle] = useState('yearly')
+interface PricingPlan {
+  name: string
+  price: {
+    monthly: string
+    yearly: string
+    once: string
+  }
+  period: string
+  features: Array<{
+    name: string
+    included: boolean
+  }>
+  cta: string
+}
 
-  const plans = [
+export default function Component() {
+  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly" | "once">("yearly")
+  const [selectedPlan, setSelectedPlan] = useState<number>(1)
+
+  const plans: PricingPlan[] = [
     {
-      name: 'Hobby',
-      price: 'FREE',
-      description: 'Unlimited Projects*',
+      name: "Hobby",
+      price: {
+        monthly: "FREE",
+        yearly: "FREE",
+        once: "FREE"
+      },
+      period: "",
       features: [
-        'Standard Themes',
-        'Macroscope domain',
-        'Basic analytics',
-        'Macroscope branding',
+        { name: "Unlimited Projects*", included: true },
+        { name: "Standard Themes", included: true },
+        { name: "Macroscope domain", included: true },
+        { name: "Basic analytics", included: true },
+        { name: "No Macroscope branding", included: false },
       ],
-      cta: 'Start for free →',
+      cta: "Start For Free",
     },
     {
-      name: 'Creator',
-      price: billingCycle === 'yearly' ? '$12' : '$14',
-      description: 'per project billed yearly',
+      name: "Creator",
+      price: {
+        monthly: "15",
+        yearly: "12",
+        once: "144"
+      },
+      period: "/mo",
       features: [
-        'Custom themes',
-        'Publish with your domain',
-        'Traffic analytics',
-        'Macroscope branding',
+        { name: "Unlimited Projects*", included: true },
+        { name: "Custom themes", included: true },
+        { name: "Publish with your domain", included: true },
+        { name: "Traffic analytics", included: true },
+        { name: "No Macroscope branding", included: false },
       ],
-      cta: 'Start free trial →',
+      cta: "Start Free Trial",
     },
     {
-      name: 'Creator Pro',
-      price: billingCycle === 'yearly' ? '$24' : '$28',
-      description: 'per project billed yearly',
+      name: "Creator Pro",
+      price: {
+        monthly: "29",
+        yearly: "24",
+        once: "288"
+      },
+      period: "/mo",
       features: [
-        'Custom themes',
-        'Publish with your domain',
-        'Traffic Analytics',
-        'No Macroscope branding',
+        { name: "Unlimited Projects*", included: true },
+        { name: "Custom themes", included: true },
+        { name: "Publish with your domain", included: true },
+        { name: "Traffic Analytics", included: true },
+        { name: "No Macroscope branding", included: true },
       ],
-      cta: 'Start free trial →',
+      cta: "Start Free Trial",
     },
   ]
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold text-center mb-2">Pricing</h2>
-      <p className="text-2xl text-center mb-4">
-        Start for Free
-        <br />
-        Upgrade for premium features.
-      </p>
-      <div className="flex justify-center space-x-4 mb-8">
-        <button
-          className={`px-4 py-2 rounded-full ${
-            billingCycle === 'monthly'
-              ? 'bg-gray-200 text-gray-800'
-              : 'bg-gray-100 text-gray-600'
-          }`}
-          onClick={() => setBillingCycle('monthly')}
-        >
-          Pay Monthly
-        </button>
-        <button
-          className={`px-4 py-2 rounded-full ${
-            billingCycle === 'yearly'
-              ? 'bg-gray-200 text-gray-800'
-              : 'bg-gray-100 text-gray-600'
-          }`}
-          onClick={() => setBillingCycle('yearly')}
-        >
-          Pay yearly
-        </button>
-      </div>
-      {billingCycle === 'yearly' && (
-        <p className="text-center text-blue-500 mb-8">2 months free</p>
-      )}
-      <div className="grid md:grid-cols-3 gap-8">
-        {plans.map((plan) => (
-          <div
-            key={plan.name}
-            className="border rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-          >
-            <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
-            <p className="text-3xl font-bold mb-1">{plan.price}</p>
-            <p className="text-sm text-gray-500 mb-4">{plan.description}</p>
-            <button className="w-full py-2 px-4 rounded-full border border-gray-300 hover:bg-gray-50 mb-4">
-              {plan.cta}
+    <section className="py-16 px-4 bg-[#F9F9F8]" aria-labelledby="pricing-heading">
+      <div className="max-w-7xl mx-auto text-center">
+        <span className="inline-block px-4 py-1 text-[#464646] bg-[#F3F2F0] rounded-full text-sm mb-4">
+          PRICING
+        </span>
+        <h1 id="pricing-heading" className="text-4xl md:text-5xl font-bold text-[#464646] mb-2">
+          Start for Free
+        </h1>
+        <p className="text-2xl md:text-3xl text-[#515151] mb-12">
+          Upgrade for premium features.
+        </p>
+
+        {/* Billing Toggle */}
+        <div className="relative w-full max-w-md mx-auto mb-12">
+          <div className="flex justify-between bg-[#F3F2F0] rounded-full p-1">
+            <button
+              onClick={() => setBillingPeriod("monthly")}
+              className="flex-1 py-2 text-sm font-medium z-10 relative"
+            >
+              Pay Monthly
             </button>
-            <ul className="space-y-2">
-              {plan.features.map((feature, index) => (
-                <li key={index} className="flex items-center">
-                  <Check
-                    className={`mr-2 h-5 w-5 ${
-                      index === 3 && plan.name !== 'Creator Pro'
-                        ? 'text-gray-300'
-                        : 'text-green-500'
-                    }`}
-                  />
-                  <span
-                    className={
-                      index === 3 && plan.name !== 'Creator Pro'
-                        ? 'text-gray-300'
-                        : ''
-                    }
-                  >
-                    {feature}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <button
+              onClick={() => setBillingPeriod("yearly")}
+              className="flex-1 py-2 text-sm font-medium z-10 relative"
+            >
+              Pay yearly
+            </button>
+            <button
+              onClick={() => setBillingPeriod("once")}
+              className="flex-1 py-2 text-sm font-medium z-10 relative"
+            >
+              Pay Once
+            </button>
+            <motion.div
+              className="absolute top-1 left-1 bottom-1 rounded-full bg-[#464646]"
+              initial={false}
+              animate={{
+                left: billingPeriod === "monthly" ? "0%" : billingPeriod === "yearly" ? "33.33%" : "66.66%",
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              style={{ width: "33.33%" }}
+            />
           </div>
-        ))}
+        </div>
+
+        {billingPeriod === "yearly" && (
+          <p className="text-sm text-[#515151] -mt-8 mb-12">2 months free</p>
+        )}
+
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {plans.map((plan, index) => (
+            <motion.div
+              key={plan.name}
+              whileHover={{ scale: 1.02 }}
+              onClick={() => setSelectedPlan(index)}
+              className={`relative bg-white rounded-2xl p-8 cursor-pointer transition-all ${
+                selectedPlan === index
+                  ? "border-2 border-[#000000] shadow-lg"
+                  : "border border-[#D7D7D7]"
+              }`}
+            >
+              <h2 className="text-xl font-semibold text-[#464646] mb-4">{plan.name}</h2>
+              <div className="mb-6">
+                {plan.price[billingPeriod] === "FREE" ? (
+                  <span className="text-4xl font-bold text-[#464646]">FREE</span>
+                ) : (
+                  <div className="flex items-start justify-center">
+                    <span className="text-4xl font-bold text-[#464646]">
+                      ${plan.price[billingPeriod]}
+                      {billingPeriod !== "once" && (
+                        <span className="text-2xl font-normal">/mo</span>
+                      )}
+                    </span>
+                  </div>
+                )}
+                <span className="text-sm text-[#C1C1C1] mt-2 block">
+                  {billingPeriod === "once" ? "one-time payment" : `per project billed ${billingPeriod}`}
+                </span>
+              </div>
+
+              <button
+                className={`w-full py-2 px-4 rounded-full mb-8 flex items-center justify-center gap-2 ${
+                  selectedPlan === index
+                    ? "bg-[#464646] text-white"
+                    : "bg-[#F3F2F0] text-[#464646]"
+                }`}
+              >
+                {plan.cta}
+                <span aria-hidden="true">→</span>
+              </button>
+
+              <ul className="space-y-4 text-left">
+                {plan.features.map((feature) => (
+                  <li key={feature.name} className="flex items-center gap-3">
+                    <Check
+                      className={feature.included ? "text-[#464646]" : "text-[#C1C1C1]"}
+                      size={20}
+                    />
+                    <span
+                      className={
+                        feature.included ? "text-[#464646]" : "text-[#C1C1C1]"
+                      }
+                    >
+                      {feature.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+
+        <p className="text-[#515151] mt-12">
+          15-day free trial • Cancel anytime • Money-back guarantee
+        </p>
       </div>
-      <p className="text-center mt-8 text-sm text-gray-500">
-        15-day free trial • Cancel anytime • Money-back guarantee
-      </p>
-    </div>
+    </section>
   )
 }
