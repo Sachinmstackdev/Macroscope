@@ -4,7 +4,7 @@ import React from 'react';
 import { DM_Sans } from 'next/font/google'
 import Image from 'next/image';
 
-const dmSans = DM_Sans({ subsets: ['latin'], weight: ['500', '700', '800'] })
+const dmSans = DM_Sans({ subsets: ['latin'], weight: ['500'] })
 
 const Usecase = () => {
   const cards = [
@@ -59,10 +59,10 @@ const Usecase = () => {
                   />
                 </div>
                 <div className="mt-6 ml-3">
-                  <h3 className="font-['DM_Sans'] font-extrabold text-xl sm:text-2xl text-[#464646] mb-3 text-left">
+                  <h3 className="font-['DM_Sans'] font-extrabold text-xl sm:text-2xl text-[#464646] mb-2 text-left">
                     {card.title}
                   </h3>
-                  <p className="font-['DM_Sans'] font-medium text-xs sm:text-sm text-[#464646] text-left w-[339px] h-[88px]">
+                  <p className="font-['DM_Sans'] font-medium text-[16px] text-[#464646]/80 text-left w-[339px] h-[88px]">
                     {card.description}
                   </p>
                 </div>
