@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from "framer-motion"
-
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/FeatureGrid"
+import Image from 'next/image'
 
 interface Feature {
   title: string
@@ -15,32 +14,32 @@ export default function Component() {
     {
       title: "Configure Layout",
       description: "Organize the groups on the map with easily drag-and-drop. Resize the group with with auto adjusting items.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://placehold.co/600x400",
     },
     {
       title: "Customize Style",
       description: "Tailor the style, shape and colors both at a group level and a map level to make the map look unique and reflect your style.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://placehold.co/600x400",
     },
     {
       title: "Manage Data",
       description: "Easily add and update data in a familiar, Google Sheets like interface, for a smooth and streamlined data management.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://placehold.co/600x400",
     },
     {
       title: "Export as Image",
       description: "Export the map as high-quality images for sharing on your social media, newsletter and presentation.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://placehold.co/600x400",
     },
     {
       title: "Publish as Website",
       description: "Publish the map on your domain or embed it inside your web page. The published map is optimized for SEO out of the box.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://placehold.co/600x400",
     },
     {
       title: "Analyze Traffic",
       description: "Get real-time analytics of traffic and events across the map and pages. Analytics Powered by Umami.is",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://placehold.co/600x400",
     },
   ]
 
@@ -65,28 +64,27 @@ export default function Component() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="border-2 border-white bg-white h-[420px] hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-                <CardHeader className="p-0">
-                  <div className="aspect-[3/2] relative bg-[#F3F2F0] rounded-t-lg overflow-hidden">
-                    <img
-                      src={feature.image}
-                      alt={`${feature.title} illustration`}
-                      className="object-cover w-full h-full"
-                      onError={(e) => {
-                        e.currentTarget.src = '/images/placeholder.png'
-                      }}
-                    />
-                  </div>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <CardTitle className="text-xl font-semibold text-[#464646] mb-3">
+              <div className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-8 border-white flex flex-col h-[420px]">
+                <div className="h-48 sm:h-56 lg:h-64 w-full bg-gray-100 rounded-2xl overflow-hidden relative">
+                  <Image
+                    src={feature.image}
+                    alt={`${feature.title} illustration`}
+                    fill
+                    className="object-cover transition-transform duration-300 hover:scale-105"
+                    onError={(e: any) => {
+                      e.currentTarget.src = '/images/placeholder.png'
+                    }}
+                  />
+                </div>
+                <div className="p-6 sm:p-8 flex-1">
+                  <h3 className="font-['DM_Sans'] font-extrabold text-xl sm:text-2xl text-[#464646] mb-3 text-left">
                     {feature.title}
-                  </CardTitle>
-                  <p className="text-[#515151] leading-relaxed">
+                  </h3>
+                  <p className="font-['DM_Sans'] font-medium text-xs sm:text-sm text-[#464646] text-left">
                     {feature.description}
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

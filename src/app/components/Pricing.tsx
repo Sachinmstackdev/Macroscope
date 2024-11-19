@@ -77,6 +77,11 @@ export default function Component() {
     },
   ]
 
+  const handlePeriodChange = (period: "monthly" | "yearly" | "once") => {
+    console.log('Changing period to:', period)
+    setBillingPeriod(period)
+  }
+
   return (
     <section className="py-16 px-4 bg-[#F9F9F8]" aria-labelledby="pricing-heading">
       <div className="max-w-7xl mx-auto text-center">
@@ -99,21 +104,21 @@ export default function Component() {
         <div className="relative w-full max-w-md mx-auto mb-12">
           <div className="flex justify-between bg-[#F3F2F0] rounded-full p-1">
             <button
-              onClick={() => setBillingPeriod("monthly")}
+              onClick={() => handlePeriodChange("monthly")}
               className={`flex-1 py-2 text-sm font-inter font-medium z-10 relative
                 ${billingPeriod === "monthly" ? "text-white" : "text-[#464646]"}`}
             >
               Pay Monthly
             </button>
             <button
-              onClick={() => setBillingPeriod("yearly")}
+              onClick={() => handlePeriodChange("yearly")}
               className={`flex-1 py-2 text-sm font-inter font-medium z-10 relative
                 ${billingPeriod === "yearly" ? "text-white" : "text-[#464646]"}`}
             >
               Pay yearly
             </button>
             <button
-              onClick={() => setBillingPeriod("once")}
+              onClick={() => handlePeriodChange("once")}
               className={`flex-1 py-2 text-sm font-inter font-medium z-10 relative
                 ${billingPeriod === "once" ? "text-white" : "text-[#464646]"}`}
             >
@@ -131,9 +136,7 @@ export default function Component() {
           </div>
         </div>
 
-        {billingPeriod === "yearly" && (
-          <p className="text-sm text-[#515151] -mt-8 mb-12 font-inter font-normal">2 months free</p>
-        )}
+        <p className="text-sm text-[#515151] -mt-8 mb-12 font-inter font-normal">2 months free</p>
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
