@@ -1,65 +1,68 @@
-export default function Component() {
+import React from 'react';
+import { DM_Sans } from 'next/font/google'
+
+const dmSans = DM_Sans({ subsets: ['latin'], weight: ['500'] })
+
+const Usecase = () => {
+  const cards = [
+    {
+      title: "Creators and Influencers",
+      description: "Create a market map of your niche that becomes a go-to resource for your audience and drive qualified leads to your courses, newsletter, YouTube channel and more.",
+    },
+    {
+      title: "Directory Makers",
+      description: "Turn your directory data into a visually engaging market map that easily captures attention, gets shared on social media, and drives traffic back to your directory site.",
+    },
+    {
+      title: "Communities",
+      description: "Engage your community members with a crowed-sourced map that promotes active participation and discussions, while creating a valuable asset for the community.",
+    }
+  ];
+
   return (
-    <section className="bg-[#CBCBCA] px-4 py-16 md:py-24">
-      <div className="container mx-auto max-w-7xl">
-        <div className="space-y-8">
-          {/* Header */}
-          <div className="text-center">
-            <button className="mb-6 rounded-full border-2 border-black px-6 py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white">
+    <div className="w-full bg-[#F3F2F0]">
+      <section className={`w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-center ${dmSans.className}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 sm:mb-8 border border-black rounded-full">
+            <span className="text-sm tracking-wide text-gray-900">
               USE CASES
-            </button>
-            <h2 className="font-['DM_Sans'] text-3xl font-medium leading-[105%] text-[#464646] md:text-5xl">
-              Create visually engaging maps of your niche the complexity of your niche in a visually engaging map that gets
-              attention and captivates your audience.
-            </h2>
+            </span>
           </div>
+          
+          <p className="text-2xl sm:text-3xl lg:text-[48px] text-[#464646] leading-[120%] sm:leading-[120%] lg:leading-[120%] max-w-[900px] mx-auto mb-12 sm:mb-16">
+            Create interactive and insightful market maps that get attention, drive traffic, engage audience and boost shares.
+          </p>
+        </div>
 
-          {/* Cards */}
-          <div className="grid gap-6 md:grid-cols-3">
-            {/* Card 1 */}
-            <div className="group relative overflow-hidden rounded-lg border-2 border-white bg-white p-6 transition-transform hover:-translate-y-1 hover:shadow-xl h-[480px] flex flex-col">
-              <img
-                src="https://placehold.co/300x300/EAEAEA/464646/png?text=Creators+and+Influencers"
-                alt="Creators and Influencers illustration"
-                className="mb-4 h-64 w-full object-cover rounded-md"
-              />
-              <h3 className="mb-3 text-xl font-semibold text-[#464646]">Creators and Influencers</h3>
-              <p className="text-sm text-gray-600 flex-grow">
-                Create a market map of your niche that becomes a go-to resource for your audience and drive qualified leads
-                to your courses, newsletter, YouTube channel and more.
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="group relative overflow-hidden rounded-lg border-2 border-white bg-white p-6 transition-transform hover:-translate-y-1 hover:shadow-xl h-[480px] flex flex-col">
-              <img
-                src="https://placehold.co/300x300/EAEAEA/464646/png?text=Directory+Makers"
-                alt="Directory Makers illustration"
-                className="mb-4 h-64 w-full object-cover rounded-md"
-              />
-              <h3 className="mb-3 text-xl font-semibold text-[#464646]">Directory Makers</h3>
-              <p className="text-sm text-gray-600 flex-grow">
-                Turn your directory data into a visually engaging market map that easily captures attention, gets shared on
-                social media, and drives traffic back to your directory site.
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="group relative overflow-hidden rounded-lg border-2 border-white bg-white p-6 transition-transform hover:-translate-y-1 hover:shadow-xl h-[480px] flex flex-col">
-              <img
-                src="https://placehold.co/300x300/EAEAEA/464646/png?text=Communities"
-                alt="Communities illustration"
-                className="mb-4 h-64 w-full object-cover rounded-md"
-              />
-              <h3 className="mb-3 text-xl font-semibold text-[#464646]">Communities</h3>
-              <p className="text-sm text-gray-600 flex-grow">
-                Engage your community members with a crowed-sourced map that promotes active participation and discussions,
-                while creating a valuable asset for the community.
-              </p>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {cards.map((card, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-4 border-white flex flex-col"
+              >
+                <div className="h-48 sm:h-56 lg:h-64 w-full bg-gray-100 rounded-t-xl overflow-hidden">
+                  <img 
+                    src="/api/placeholder/400/320" 
+                    alt={`${card.title} illustration`}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <div className="p-6 sm:p-8 flex-1">
+                  <h3 className="text-xl sm:text-2xl font-medium text-gray-900 mb-3">
+                    {card.title}
+                  </h3>
+                  <p className="text-base sm:text-lg text-gray-600">
+                    {card.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    </section>
-  )
-}
+      </section>
+    </div>
+  );
+};
+
+export default Usecase;

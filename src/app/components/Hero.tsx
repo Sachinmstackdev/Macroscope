@@ -28,9 +28,9 @@ const HeroSection = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-white">
       {/* Navigation Bar */}
-      <nav className="w-full px-4 md:px-8 py-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+      <nav className="w-full px-4 md:px-8 py-4 border-b border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
@@ -40,15 +40,15 @@ const HeroSection = () => {
               width={180}
               height={38}
               priority
-              className="text-gray-900 dark:invert"
+              className="text-gray-900"
             />
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#pricing" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white`}>Pricing</a>
-            <a href="#login" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white`}>Log in</a>
-            <button className="bg-black dark:bg-white text-white dark:text-gray-900 px-6 py-2 rounded-full flex items-center justify-center space-x-2 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
+            <a href="#pricing" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 hover:text-gray-900`}>Pricing</a>
+            <a href="#login" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 hover:text-gray-900`}>Log in</a>
+            <button className="bg-black text-white px-6 py-2 rounded-full flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors">
               <span className={`${dmSerifText.className} text-xl leading-[140%] w-[194px] h-[28px]`}>Create A Map For Free</span>
               <FaCircleArrowRight className="text-lg" />
             </button>
@@ -60,19 +60,19 @@ const HeroSection = () => {
             className="md:hidden"
           >
             {isMenuOpen ? 
-              <X size={24} className="text-gray-900 dark:text-white" /> : 
-              <Menu size={24} className="text-gray-900 dark:text-white" />
+              <X size={24} className="text-gray-900" /> : 
+              <Menu size={24} className="text-gray-900" />
             }
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-white dark:bg-gray-900 border-b dark:border-gray-700 z-50">
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-gray-200 z-50">
             <div className="flex flex-col space-y-4 p-4">
-              <a href="#pricing" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white`}>Pricing</a>
-              <a href="#login" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white`}>Log in</a>
-              <button className="bg-black dark:bg-white text-white dark:text-gray-900 px-6 py-2 rounded-full flex items-center justify-center space-x-2 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
+              <a href="#pricing" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 hover:text-gray-900`}>Pricing</a>
+              <a href="#login" className={`${dmSans.className} text-xl leading-[100%] text-gray-600 hover:text-gray-900`}>Log in</a>
+              <button className="bg-black text-white px-6 py-2 rounded-full flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors">
                 <span className={`${dmSerifText.className} text-xl leading-[140%] w-[194px] h-[28px]`}>Create A Map For Free</span>
                 <FaCircleArrowRight className="text-lg" />
               </button>
@@ -87,7 +87,7 @@ const HeroSection = () => {
           <span className="block font-['DM_Sans'] font-medium mb-2 text-[#464646]">
             Build authority in your niche
           </span>
-          <span className="block text-[#464646]">
+          <span className="block text-[#464646] font-['DM_Sans'] font-medium mb-2">
             with{' '}
             <span className="font-['Playfair_Display'] italic text-[#000000] font-bold">
               Interactive Market Map
