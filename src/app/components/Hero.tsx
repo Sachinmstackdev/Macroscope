@@ -82,12 +82,12 @@ const HeroSection = () => {
       </nav>
 
       {/* Hero Content */}
-      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-16 pb-24 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl max-w-4xl mx-auto">
-          <span className="block font-['DM_Sans'] font-medium mb-2 text-[#464646]">
+      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-8 md:pt-16 pb-12 md:pb-24 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-4xl mx-auto">
+          <span className="block font-['DM_Sans'] font-medium mb-2 text-[#464646] px-4">
             Build authority in your niche
           </span>
-          <span className="block text-[#464646] font-['DM_Sans'] font-medium mb-2">
+          <span className="block text-[#464646] font-['DM_Sans'] font-medium mb-2 px-4">
             with{' '}
             <span className="font-['Playfair_Display'] italic text-[#000000] font-bold">
               Interactive Market Map
@@ -96,7 +96,7 @@ const HeroSection = () => {
           </span>
         </h1>
         
-        <p className={`${dmSans.className} text-[20px] leading-[140%] text-[#464646]/70 max-w-2xl mx-auto mt-6 mb-8`}>
+        <p className={`${dmSans.className} text-base sm:text-lg md:text-[20px] leading-[140%] text-[#464646]/70 max-w-2xl mx-auto mt-4 md:mt-6 mb-6 md:mb-8 px-4`}>
           Macroscope helps you easily create interactive and insightful market maps
           that get attention, drive traffic, engage audience and boost shares.
         </p>
@@ -106,21 +106,16 @@ const HeroSection = () => {
           <FaCircleArrowRight className="text-lg" />
         </button>
 
-        {/* Market Map Container */}
-        <div className="mt-16">
-          {/* Map Header */}
+        {/* Market Map Container - adjust height for mobile */}
+        <div className="mt-8 md:mt-16">
           <MapHeader />
-          
-          {/* Market Map Image */}
-          <div className="relative h-[600px] bg-gray-200 animate-pulse rounded-b-lg">
+          <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-gray-200 animate-pulse rounded-b-lg">
             <Image 
               src="/market-map-example.jpg"
               alt="Interactive Market Map Example"
               fill
               className="object-cover rounded-b-lg shadow-lg"
               priority
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA"
-              placeholder="blur"
             />
           </div>
         </div>

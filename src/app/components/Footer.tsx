@@ -5,29 +5,24 @@ import { IoIosMail } from "react-icons/io";
 
 export default function Footer() {
   return (
-    <footer className="w-full pb-12 bg-white">
+    <footer className="w-full pb-6 sm:pb-12 bg-white">
       <div className="border-t border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex flex-col items-center md:items-start">
-              <div className="flex items-center mb-2">
-                <Image
-                  src="/Footer-Logo.png"
-                  alt="Macroscope Logo"
-                  width={250}
-                  height={60}
-                  className="mr-2"
-                  style={{ height: 'auto' }}
-                />
-              </div>
-              <p className="text-sm text-center md:text-left max-w-md">
-                Create Interactive Market Maps that helps you <br />  build authority in your niche and drive traffic
-              </p>
-              <p className="text-sm mt-2">
-                Made with ♥ by Cebe
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <div className="flex flex-col items-center md:items-start space-y-2">
+              <Image
+                src="/Footer-Logo.png"
+                alt="Macroscope Logo"
+                width={200}
+                height={48}
+                className="w-[180px] sm:w-[200px] md:w-[250px]"
+                style={{ height: 'auto' }}
+              />
+              <p className="text-xs sm:text-sm text-center md:text-left max-w-md">
+                Create Interactive Market Maps that helps you <br className="hidden sm:block" /> build authority in your niche and drive traffic
               </p>
             </div>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap justify-center gap-4">
               <a href="#" className="text-black hover:text-gray-700">
                 <span className="sr-only">Twitter</span>
                 <FaSquareXTwitter className="h-8 w-8" />
@@ -52,15 +47,17 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <div className="mt-8 text-center text-sm text-gray-500">
-            <div className="flex items-center justify-center space-x-4">
+          <div className="mt-6 sm:mt-8 text-center text-xs sm:text-sm text-gray-500">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
               <span>© 2024 Macroscope. All rights reserved</span>
-              <span>|</span>
-              <a href="#" className="hover:text-gray-900">Privacy Policy</a>
-              <span>|</span>
-              <a href="#" className="hover:text-gray-900">Terms of Service</a>
-              <span>|</span>
-              <a href="#" className="hover:text-gray-900">Contact Us</a>
+              <div className="hidden sm:block">|</div>
+              <div className="flex items-center space-x-4">
+                <a href="#" className="hover:text-gray-900">Privacy Policy</a>
+                <span>|</span>
+                <a href="#" className="hover:text-gray-900">Terms of Service</a>
+                <span>|</span>
+                <a href="#" className="hover:text-gray-900">Contact Us</a>
+              </div>
             </div>
           </div>
         </div>
